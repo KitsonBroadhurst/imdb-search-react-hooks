@@ -5,3 +5,9 @@ https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-ho
 
 Thanks to OMDb for the free API:
 http://www.omdbapi.com/
+
+Using React Hooks:
+https://reactjs.org/docs/hooks-intro.html
+
+Using 'styled-components':
+https://www.styled-components.com/
