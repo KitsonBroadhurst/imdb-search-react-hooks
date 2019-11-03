@@ -1,4 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState }    from 'react'
+import styled                 from 'styled-components'
+
+const StyledSearch = styled.form`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+
+  input[type="text"]{
+    width: 40%;
+    min-width: 170px;
+  }
+`
 
 const Search = (props) => {
   const [searchValue, setSearchValue] = useState("")
@@ -18,14 +32,14 @@ const Search = (props) => {
   }
 
   return (
-    <form className="search">
+    <StyledSearch>
       <input 
         value={ searchValue }
         onChange={ handleSearchInputChanges }
         type="text"
       />
       <input onClick={ callSearchFunction } type="submit" value="SEARCH" />
-    </form>
+    </StyledSearch>
   )
 }
 

@@ -1,8 +1,10 @@
 import React, { useReducer, useEffect }   from 'react'
-import                                  '../App.css'
-import Header                           from './Header'
-import Search                           from './Search'
-import Movie                            from './Movie'
+import { ThemeProvider }                  from 'styled-components'
+import { theme }                          from '../styles/theme'
+import { GlobalStyles }                   from '../styles/global'
+import Header                             from './Header'
+import Search                             from './Search'
+import Movie                              from './Movie'
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=37637f32"
 
@@ -78,25 +80,29 @@ const App = () => {
   const { movies, errorMessage, loading } = state
 
   return (
-    <div className="App">
-      <Header text="Hooked" />
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyles />
 
-      <Search search={ search } />
+        <Header text="Hooked" />
 
-      <p className="App-intro">Sharing a few of our favourite movies</p>
+        <Search search={ search } />
 
-      <div className='movies'>
-        {loading && !errorMessage ? (
-          <span>loading...</span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{ errorMessage }</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={ movie } /> 
-          ))
-        )}
-      </div>
-    </div>
+        <p className="App-intro">Sharing a few of our favourite movies</p>
+
+        <div className='movies'>
+          {loading && !errorMessage ? (
+            <span>loading...</span>
+          ) : errorMessage ? (
+            <div className="errorMessage">{ errorMessage }</div>
+          ) : (
+            movies.map((movie, index) => (
+              <Movie key={`${index}-${movie.Title}`} movie={ movie } /> 
+            ))
+          )}
+        </div>
+      </>
+    </ThemeProvider>
   )
 }
 
